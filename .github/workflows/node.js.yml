@@ -17,7 +17,7 @@ jobs:
     - run: npm run build
 
     # 发布到gq15760172077.github.io/master
-    - name: Deploygq15760172077.github.io/master
+    - name: Deploy gq15760172077.github.io/master
       uses: peaceiris/actions-gh-pages@v2
       env:
         ACTIONS_DEPLOY_KEY: ${{ secrets.ACCESS_TOKEN }}
