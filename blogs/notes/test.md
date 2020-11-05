@@ -1,12 +1,12 @@
 ---
-title: 烤鸭的做法
+title: 学习笔记
 date: 2019-08-08
 sidebar: 'auto'
 categories:
  - notes
 tags:
- - 鸭子
-# keys:
-#  - '123456'
+ - net
+keys:
+ - '123456'
 # publish: false
 ---

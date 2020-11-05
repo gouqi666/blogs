@@ -53,17 +53,17 @@ module.exports = {
         "items": [
           {
             "text": "GitHub",
-            "link": "https://github.com/recoluan",
+            "link": "https://github.com/gq15760172077/blogs",
             "icon": "reco-github"
           },
           {
             "text": "email",
-            "link": "https://github.com/recoluan",
+            "link": "https://github.com/gq15760172077/blogs",
             "icon": "reco-github"
           },
           {
             "text": "qq",
-            "link": "https://github.com/recoluan",
+            "link": "https://github.com/gq15760172077/blogs",
             "icon": "reco-github"
           }
         ]
