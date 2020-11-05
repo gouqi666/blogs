@@ -1,6 +1,6 @@
 module.exports = {
   "title": "blog",
-  "base":'/blogs/blogs/',
+  //"base":'/blogs/',
   "description": "blog",
   "dest": "public",
   "head": [
