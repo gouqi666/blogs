@@ -1,6 +1,6 @@
 module.exports = {
   "title": "blog",
-  // "base":'/blogs/',
+  "base":'/blogs/blogs/',
   "description": "blog",
   "dest": "public",
   "head": [
@@ -21,10 +21,11 @@ module.exports = {
   ],
   "theme": "reco",
   "themeConfig": {
+    "subSidebar": 'auto',
     "codeTheme": 'tomorrow',
     "valineConfig": {
-      appId: '...',// your appId
-      appKey: '...', // your appKey
+      "appId": '...',// your appId
+      "appKey": '...', // your appKey
     },
     "nav": [
       {
