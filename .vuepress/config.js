@@ -24,8 +24,8 @@ module.exports = {
     "subSidebar": 'auto',
     "codeTheme": 'tomorrow',
     "valineConfig": {
-      "appId": '...',// your appId
-      "appKey": '...', // your appKey
+      "appId": 'Phuf0MFr8D1lMTEyR6To8V5A-9Nh9j0Va',// your appId
+      "appKey": 'bwVJhQh5C3zLB9n9cndgXCSy', // your appKey
     },
     "nav": [
       {
