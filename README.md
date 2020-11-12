@@ -1,10 +1,10 @@
 ---
 home: true
-heroText: welcome to gq's blog
-tagline: Enjoy when you can, and endure when you must.
+heroText: Enjoy when you can, and endure when you must.
+tagline: richard
 heroImage: null
 heroImageStyle: {
-  maxWidth: '600px',
+  maxWidth: '500px',
   width: '100%',
   display: block,
   margin: '9rem auto 2rem',
@@ -13,7 +13,7 @@ heroImageStyle: {
 }
 bgImage: /bg.jpg
 bgImageStyle: {
-  height: '600px'
+  height: '500px'
 }
 isShowTitleInHome: true
 actionText: 个人介绍 →
