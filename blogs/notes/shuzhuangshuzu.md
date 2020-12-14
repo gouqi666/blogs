@@ -3,7 +3,7 @@ title: 树状数组入门
 date: 2020-12-01
 sidebar: "auto"
 categories:
-  - algorithm
+  - notes
 tags:
   - PAT
   - 树状数组
