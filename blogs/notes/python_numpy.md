@@ -1,16 +1,17 @@
 ---
-title: C++lambda 表达式和自定义哈希函数
-date: 2020-12-14
+title: python Numpy常用api总结
+date: 2020-12-17
 sidebar: "auto"
 categories:
   - notes
 tags:
-  - c++
+  - python
+  - numpy
 ---
 
 ## 写在前面
 
-&nbsp;&nbsp;最近实习没啥工作，趁这段时间复习一下 python，之前学的 python 都断断续续的，而且中间夹杂了很多框架的 api，对 python 原生以及一些基础库不是很熟悉，还有一部分原因是写 python 的时候比较少，大多数时候是写项目的时候会用一点，如果能尝试用 python 刷题的话，那肯定熟悉得更快（试过，很痛苦...）。这里主要记录下与数据分析相关的基础模块，就是 Numpy, Pandas, Matplotlib。其中借鉴了网上很多博客，本篇先来Numpy！
+&nbsp;&nbsp;最近实习没啥工作，趁这段时间复习一下 python，之前学的 python 都断断续续的，而且中间夹杂了很多框架的 api，对 python 原生以及一些基础库不是很熟悉，还有一部分原因是写 python 的时候比较少，大多数时候是写项目的时候会用一点，如果能尝试用 python 刷题的话，那肯定熟悉得更快（试过，很痛苦...）。这里主要记录下与数据分析相关的基础模块，就是 Numpy, Pandas, Matplotlib。其中借鉴了网上很多博客，本篇先来 Numpy！
 
 ## Numpy
 
@@ -125,21 +126,21 @@ tags:
 - ptp(a) : 计算数组 a 最大值和最小值的差
 - median(a) : 计算数组 a 中元素的中位数（中值）
 
-**numpy的梯度函数**
-- np.gradient(a) ： 计算数组a中元素的梯度，a为多维时，返回每个维度的梯度  ，这里是离散梯度
-&nbsp;&nbsp;离散梯度： xy坐标轴连续三个x轴坐标对应的y轴值：a, b, c 其中b的梯度是（c-a）/2 
-而c的梯度是： (c-b)/1  
-&nbsp;&nbsp;当为二维数组时，np.gradient(a) 得出两个数组，第一个数组对应最外层维度的梯度，第二个数组对应第二层维度的梯度。 就是一个是从行取计算离散梯度，一个是从列计算梯度。
+**numpy 的梯度函数**
+
+- np.gradient(a) ： 计算数组 a 中元素的梯度，a 为多维时，返回每个维度的梯度 ，这里是离散梯度
+  &nbsp;&nbsp;离散梯度： xy 坐标轴连续三个 x 轴坐标对应的 y 轴值：a, b, c 其中 b 的梯度是（c-a）/2
+  而 c 的梯度是： (c-b)/1  
+  &nbsp;&nbsp;当为二维数组时，np.gradient(a) 得出两个数组，第一个数组对应最外层维度的梯度，第二个数组对应第二层维度的梯度。 就是一个是从行取计算离散梯度，一个是从列计算梯度。
 
 **图像的表示和变换**  
-PIL,python image library 库   
-from PIL import Image &nbsp;&nbsp;Image是PIL库中代表一个图像的类（对象）
+PIL,python image library 库  
+from PIL import Image &nbsp;&nbsp;Image 是 PIL 库中代表一个图像的类（对象）
 
 - im = np.array(Image.open(“.jpg”)) #读取
 
-- im = Image.fromarray(b.astype(‘uint8’)) # 生成 
+- im = Image.fromarray(b.astype(‘uint8’)) # 生成
 
 - im.save(“路径.jpg”) # 保存
 
 - im = np.array(Image.open(“.jpg”).convert(‘L’)) # convert(‘L’)表示转为灰度图
-
