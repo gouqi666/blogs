@@ -525,7 +525,7 @@ tags:
 
 <img :src="$withBase('/notes/mp17.png')" alt="mp17图">
 
-## 最后
+## 最后的最后
 
 官方画廊有很多例图，都有对应的代码，[详情点击](https://matplotlib.org/gallery.html)   
  官方文档写的非常好，比如我们主要关注的 pyplot 文档。[详情点击](https://matplotlib.org/api/pyplot_summary.html)  
