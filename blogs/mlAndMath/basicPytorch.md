@@ -1,3 +1,14 @@
+---
+title: pytorch 基础知识记录
+date: 2021-3-27
+sidebar: "auto"
+categories:
+  - mlAndMath
+tags:
+  - pytorch
+  - dl
+---
+
 ## pytorch 基础知识记录
  - torchtext,torchvision,torchaudio分别是torch提供的分别关于自然语言处理，视觉以及语音方面的三个库，包含了一些相关的数据集，可以直接下载。
  - NLTK（Natural language toolkit）是常见的自然语言处理工具包，包含了一些分词模块，如（‘punk’）, 其中nltk_data不好下载，可以通过离线的方式进行下载然后放置对应目录。
