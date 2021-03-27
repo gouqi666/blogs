@@ -9,13 +9,12 @@ tags:
   - dl
 ---
 
-## pytorch 基础知识记录
  - torchtext,torchvision,torchaudio分别是torch提供的分别关于自然语言处理，视觉以及语音方面的三个库，包含了一些相关的数据集，可以直接下载。
  - NLTK（Natural language toolkit）是常见的自然语言处理工具包，包含了一些分词模块，如（‘punk’）, 其中nltk_data不好下载，可以通过离线的方式进行下载然后放置对应目录。
  - torchteext采用声明式方法加载数据，需要先声明一个Field对象，这个Field对象指定你想要怎么处理某个数据,each Field has its own Vocab class。
  - - -
  
-#### Field相关参数如下：
+## Field相关参数如下：
 > squential：数据是否为序列数据，默认为Ture。如果为False，则不能使用分词。  
 use_vocab：是否使用词典，默认为True。如果为False，那么输入的数据类型必须是数值类型(即使用vocab转换后的)。  
 init_token：文本的其实字符，默认为None。  
@@ -64,7 +63,7 @@ TEXT.build_vocab(train_data,       
                         LABEL.build_vocab(train_data)
                       )
 ```
-#### DataLoader
+## DataLoader
 DataLoader 是 torch.utils.data下的工具包，用于方便训练或测试的时候数据迭代。
 ```python
 transform=transforms.Compose([transforms.ToTensor(),              transforms.Normalize((0.5,0.5,0.5),0.5,0.5,0.5))]                                                     )
@@ -85,7 +84,7 @@ train_iterator, vaild_iterator, test_iterator = data.BucketIterator.splits(  �
 )
 ```
 
-#### LSTM 
+## LSTM 
 ```python
 nn.LSTM(embedding_dim,         # embdding的维度
             hidden_dim,          
@@ -107,6 +106,6 @@ output, output_lengths = nn.utils.rnn.pad_packed_sequence(packed_output)
 x = torch.randn(5, 3, 10)
 # 可以理解为：batch_size = false的时候， 1个batch中有3个句子，每个句子5个单词，每个单词用10维的向量表示；而句子的长度是不一样的，所以seq_len可长可短，这也是LSTM可以解决长短序列的特殊之处。只有seq_len这一参数是可变的。
 ```
-#### 一个简单的文本分类项目
-    数据集用imdb数据，用nltk中tokenize进行分词。词向量用的"glove.6B.300d"
-    [链接](https://github.com/gq15760172077/pytorch)
+## 一个简单的文本分类项目
+ 数据集用imdb数据，用nltk中tokenize进行分词。词向量用的"glove.6B.300d"  
+  [github链接](https://github.com/gq15760172077/pytorch)
