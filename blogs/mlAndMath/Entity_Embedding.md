@@ -1,6 +1,6 @@
 ---
 title: entity Embedding
-date: 2021-3-30
+date: 2021-03-30
 sidebar: "auto"
 categories:
   - mlAndMath
