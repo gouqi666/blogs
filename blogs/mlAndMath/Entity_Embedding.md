@@ -88,12 +88,12 @@ df_transform = encoder.transform(df)
  3. 基于聚类,无监督
  kmeans, 
  4. 基于树
-- entity embedding  
-one hot 乘以一个矩阵的形式，一般应用于离散变量的embedding，对于连续变量，其离散化必然会丢失一些东西，但也可以通过某种方式加回来。
-- 连续变量embedding的一些trick
+  - entity embedding  
+    one hot 乘以一个矩阵的形式，一般应用于离散变量的embedding，对于连续变量，其离散化必然会丢失一些东西，但也可以通过某种方式加回来。
+  - 连续变量embedding的一些trick
     1.  首先对连续变量的取值范围进行分组，如1-10000分20组，numberOfBins,
     2.  计算每个组中对应的Centroid（用Ci表示），这里Ci可以是平均值或者median。
-    3. 对于输入X，计算其相对于每个分组的权重$W_{i}$，$\epsilon$为一个非常小的常数，防止分母为0。  
+    3.  对于输入X，计算其相对于每个分组的权重$W_{i}$，$\epsilon$为一个非常小的常数，防止分母为0。  
     $$W_{i} = softmax(\frac{1}{\left | X - C_{i} \right|  + \epsilon})$$  
     4.根据对应权重乘以对应组的$E_{i}$（embedding vector）即可算出当前X的词向量。  
     $$V = \sum_{i=1}^N W_{i} * E_{i}$$  
