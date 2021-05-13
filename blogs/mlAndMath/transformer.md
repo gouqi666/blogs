@@ -16,6 +16,5 @@ transformer 是谷歌 2017 年在论文《Attention is All You Need》提出的�
 
 ## 参考
 
-[transformer 相关链接 1](https://zhuanlan.zhihu.com/p/42706477)  
+[transformer 相关链接 1](https://zhuanlan.zhihu.com/p/44121378)  
 [transformer 相关链接 2](https://blog.csdn.net/longxinchen_ml/article/details/86533005)
- 
