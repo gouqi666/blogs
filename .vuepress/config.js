@@ -47,15 +47,11 @@ module.exports = {
             "link": "https://github.com/gq15760172077/blogs",
             "icon": "reco-github"
           },
-          {
-            "text": "email",
-            "link": "https://github.com/gq15760172077/blogs",
-            "icon": "reco-github"
-          },
+
           {
             "text": "qq",
-            "link": "https://github.com/gq15760172077/blogs",
-            "icon": "reco-github"
+            "link": 'tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1543636781&website=www.oicqzone.com',
+            "icon": "reco-qq"
           }
         ]
       }
