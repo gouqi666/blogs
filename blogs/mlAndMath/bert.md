@@ -18,7 +18,10 @@ tags:
 - ELMo  
   大致是先经过character embedding，再经过convolution，最终输入到一个双向LSTM中，其用法主要是拿出LSTM中的隐藏层，然后与word embedding去作拼接或求和等再输入到原本需要用到word embedding的位置  
   解决了前面三个目的（除了不能使用较深的模型）。  
-- BERT
-  
+- BERT  
+  双向训练，与双向lstm的双向不同，lstm的双向交互其实在最后面的正向结果和反向结果交互，而bert的双向是在训练过程中就交互了，通过mask，然后让其前面的词和后面的词都参与预测，这才是bert的双向  
+  两个任务，一个预测被mask的词，还有一个是NSR，分句，就是区分不同的句子。  
+  输入有三个 input_ids,token_type_ids,position_ids。  
+  给出一个demo，使用bertModel，然后用的数据集是IMDB数据集。[github链接](https://github.com/gq15760172077/pytorch/blob/master/bert-imdb.ipynb)
 
 

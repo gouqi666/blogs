@@ -108,4 +108,5 @@ x = torch.randn(5, 3, 10)
 ```
 ## 一个简单的文本分类项目
  数据集用imdb数据，用nltk中tokenize进行分词。词向量用的"glove.6B.300d"  
-  [github链接](https://github.com/gq15760172077/pytorch/blob/master/basicTextClassified.py)
+  1.使用pytorch自带的api：[github链接1](https://github.com/gq15760172077/pytorch/blob/master/basicTextClassified.py)  
+  2.自己处理数据：[github链接2](https://github.com/gq15760172077/pytorch/blob/master/gru-classify.ipynb  

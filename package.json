@@ -13,5 +13,15 @@
   "dependencies": {
     "vue-class-component": "^7.2.3"
   },
-  "description": "blog"
+  "description": "blog",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gq15760172077/blogs.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gq15760172077/blogs/issues"
+  },
+  "homepage": "https://github.com/gq15760172077/blogs#readme"
 }
