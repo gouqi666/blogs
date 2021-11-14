@@ -1,4 +1,4 @@
-<!-- ---
+---
 title: python matplotlib常用api总结
 date: 2020-12-23
 sidebar: "auto"
@@ -530,4 +530,4 @@ tags:
 
 官方画廊有很多例图，都有对应的代码，[详情点击](https://matplotlib.org/gallery.html)   
  官方文档写的非常好，比如我们主要关注的 pyplot 文档。[详情点击](https://matplotlib.org/api/pyplot_summary.html)  
- 另外，在上面的一些例子中，我们修改了一些线型、颜色之类的属性，它们几乎都是所谓的'magic string'，它们实际上主要来自于 MATLAB 的定义，你可以在这里找到它们对应的含义。[详情点击](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot) -->
+ 另外，在上面的一些例子中，我们修改了一些线型、颜色之类的属性，它们几乎都是所谓的'magic string'，它们实际上主要来自于 MATLAB 的定义，你可以在这里找到它们对应的含义。[详情点击](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot)
