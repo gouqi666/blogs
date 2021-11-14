@@ -493,7 +493,7 @@ tags:
     # savefig('../figures/plot3d_ex.png',dpi=48)
     plt.show()
 ```
-
+   
 
 <img :src="$withBase('/notes/mp16.png')" alt="mp16图">
 
