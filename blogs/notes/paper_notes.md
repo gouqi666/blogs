@@ -58,6 +58,8 @@ CRS的基础入门论文
 本文提出了通过RL+SEQ2SEQ的模型来捕获未来性的reward和全局的信息，保证对话不会陷入循环或者无意义的回复，从而保持良好的可持续的交谈。创新性地提出了三种评估对话生成reward，并通过policy gradient的方法来训练policy model。
 
 ## SeqGAN: Sequence Generative Adversarial Nets with Policy Gradient [链接](https://arxiv.org/pdf/1609.05473.pdf) 
-- 组会同学分享的一篇
-- 这篇模型结构看起来比较复杂，用了GAN和RL，RL用的是policy gradient。其具体模型是seq2seq的一个encoder。其大致思想是用强化学习生成sequence，动作空间是整个词表，然后这个是作为GAN的生成式模型。其reward是判别式模型给出的，判别式模型是一个CNN。其每次打分是针对一个序列打的分，当当前生成的序列没有结尾时，其会使用蒙特卡洛树搜索去填补后面的词直到序列结尾，这时候才开始进行打分，将得到的reward进行回传，然后用policy gradient 更新。
-        <img :src="$withBase('/notes/rl_gan1.png')" alt="rl_gan1">
+- 组会同学分享的一篇  
+- 这篇模型结构看起来比较复杂，用了GAN和RL，RL用的是policy gradient。其具体模型是seq2seq的一个encoder。其大致思想是用强化学习生成sequence，动作空间是整个词表，然后这个是作为GAN的生成式模型。其reward是判别式模型给出的，判别式模型是一个CNN。其每次打分是针对一个序列打的分，当当前生成的序列没有结尾时，其会使用蒙特卡洛树搜索去填补后面的词直到序列结尾，这时候才开始进行打分，将得到的reward进行回传，然后用policy gradient 更新。  
+
+    <img :src="$withBase('/notes/rl_gan1.png')" alt="rl_gan1">  
+  
