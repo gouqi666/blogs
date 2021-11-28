@@ -80,7 +80,16 @@ CRS的基础入门论文
       **属性打分函数**  
   - 数据集用的是 LastFM for music artist recommendation and Yelp for business recommendation  
   - 其提出了很多方式来论证它的方法的好坏和与之前的方法的对比，crs的评价指标大致有两个，success rate 和 average turn，成功率越高和平均对话轮数越少，推荐系统质量越高。     
-  
+
 **总结**  
 这篇文章感觉东西非常多，很多我也只停留在表面认识上，没有动手实践过，但是可以看出来它是着重于对话策略的选取和推荐部分的，其基本上没有提到传统的对话系统中的一些架构，比如 NLU,NLG等等。
   
+## Interactive Recommender System via Knowledge Graph-enhanced Reinforcement Learning [链接](https://arxiv.org/pdf/2006.10389.pdf)  
+IRS感觉与CRS不同的点在于CRS一般是先询问属性再进行推荐，最后的准确率是看最终推荐的商品是否准确，CRS是每一轮都推荐，然后由用户给反馈，如点击商品，广告等，然后就更新策略，继续下一轮推荐，直到达到最大交互轮数，有点类似于抖音，今日头条的感觉。  
+然后这篇文章也是用了graph和RL，但是和上一篇文章有区别。  
+- graph中求embedding用了GCN，GCN主要思想就是三步，发射，接收，变换，发射是指从当前节点向其相邻节点发射自身信息，接收是指将邻居节点的特征信息聚合起来（可以是简单的embedding相加），然后聚集后的信息做非线性变换，增加模型的表达能力，然后送入线性层分类。然后用这种方式得到每个item的embedding。   
+- 然后每轮对话的状态的表示用的是之前的用户点击过的item embedding的聚合，这里用的GRU，也就是说它将item按照序列先后顺序输入到GRU中，最终会得到GRU的hidden states作为当前轮用户的embdding，然后作为DQN的状态输入。    
+- 缩小候选集的空间，这里认为RL的候选空间比太大了，就是要推荐的商品太多了，不可能完全考虑到，因此这里就用graph缩小了动作空间，只考虑在图上与之前的item有关系的item节点。然后再送入GCN中等到候选集节点的embedding，把这个当作候选空间。  
+- DQN用两种，一个是dueling dqn，一个是double dqn。 其训练是在已有数据上进行off-line 训练，user simulator是自己构建的。其reward也是由用户模拟器给出的，这部分也是user simulator预测出来的。  
+**总结**   
+IRS和CRS还是不一样的，然后感觉graph和RL每篇都在用，虽然用法不一定完全相同，这里的graph embedding不是通过KGE得出的而是GCN得出的，然后是用的DQN而不是policy gradient。  
