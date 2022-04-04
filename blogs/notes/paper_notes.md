@@ -105,5 +105,22 @@ IRS和CRS还是不一样的，然后感觉graph和RL每篇都在用，虽然用�
      <img :src="$withBase('/notes/vae1.png')" alt="vae1">  
     
   4. CVAE（条件VAE）  
-    这里的条件是指label，往往我们是希望能够实现控制某个变量来实现生成某一类图像。CVAE 不是一个特定的模型，而是一类模型，总之就是把标签信息融入到 VAE 中的方式有很多，目的也不一样。 一种比较简单的实现方式是将label融入进KL散度loss，即让每一类都有一个专属的均值，这个均值可以让模型自己训练出来，然后在计算kl loss的时候用当前样本采样出来的均值减去对应样本所属类的均值，如下图所示：   
+    这里的条件是指一些输入控制的变量，如情感类别，时态等等，往往我们是希望能够实现控制某个变量来实现生成某一类图像。CVAE 不是一个特定的模型，而是一类模型，总之就是把标签信息融入到 VAE 中的方式有很多，目的也不一样。 一种比较简单的实现方式是将条件融入进KL散度loss，即让每一类都有一个专属的均值，这个均值可以让模型自己训练出来，然后在计算kl loss的时候用当前样本采样出来的均值减去对应样本所属类的均值，如下图所示：   
          <img :src="$withBase('/notes/vae2.png')" alt="vae2">  
+
+## Generating Sentences From a Continuous Spaces（VAE在nlp中应用的开山之作）  
+  这篇文章是vae在nlp中使用的开山之作，其动机是为了弥补在传统的RNNLM结构中缺少一些global feature（或者可以说是sentence representation），因为之前有人指出RNN由于是逐词生成，模型更容易注意词之间的关系，而容易忽略更高层的关系，如语义，主题等等高层信息，这就导致了RNN不适合generate特定的sentence。  
+  - 其Loss 的组成还是和 VAE 一样。具体模型上，encoder 和 decoder 都采用单层的 LSTM，decoder 可以看做是特殊的 RNNLM，其 initial state 是这个 hidden code z（latent variable），z 采样自 Gaussian 分布 G，G 的参数由 encoder 后面加的一层 linear layer 得到。这里的 z 就是作者想要的 global latent sentence representation，被赋予了先验 diagonal Gaussians，同时 G 就是学到的后验。  
+  - 模型很简单，但实际训练时有一个很严重的问题：KL 会迅速降到 0，后验失效了。原因在于，由于 RNN-based 的 decoder 有着非常强的 modeling power，直接导致即使依赖很少的 history 信息也可以让 reconstruction errors 降得很低，换句话说，decoder 不依赖 encoder 提供的这个 z 了，模型等同于退化成 RNNLM（摊手）。
+    提出了两个解决办法：
+    - KL cost annealing  
+      作者引入一个权重 w 来控制这个 KL 项，并让 w 从 0 开始随着训练逐渐慢慢增大。作者的意思是一开始让模型学会 encode 更多信息到 z 里，然后随着 w 增大再 smooth encodings。其实从工程/代码的角度看，因为 KL 这项更容易降低，模型会优先去优化 KL，于是 KL 很快就降成 0。但如果我们乘以一开始很小的 w，模型就会选择忽视 KL（这项整体很小不用降低了），选择优先去降低 reconstruction errors。当 w 慢慢增大，模型也慢慢开始关注降低 KL 这项了。这个技巧在调参中其实也非常实用。
+    - Word dropout  
+      既然问题是 RNN-based 的 decoder 能力太强，那我们就来弱化它好了。具体方法是把 input 的词替换成 UNK（我可能是个假的 decoder），模型被迫只能去多多依赖z。当然保留多少 input 也需要尝试，我们把全都不保留的叫做 inputless decoder，实验表明，inputless VAE 比起 inputless RNN language model 不知道好到哪里去了。
+
+  - 受到 GAN 的启发，作者还提出了一个 Adversarial evaluation，用一半真一半假的数据作为样本训练出一个分类器，再对比不同模型生成的句子有多少能骗过这个分类器，这个 evaluation 被用在 Imputing missing words 这个任务上，VAE 的表现同样比 RNNLM 出色。    
+  
+我的理解：  vae的具体应用在这篇中没有怎么提到，我感觉它主要是在做可控文本生成，如给你一句话，生成一句与它相似的话，这里的方差就可以很好的做到泛化性。它还说能够进行Imputing missing words，我看了论文中具体的那部分，但是没怎么看懂，它说vae比RNNLM在缺失词补全上效果更好，因为其有了一个global latent representation，而且它用了word dropout，即把decoder的输入一部分替换成UNK，这样更能产生一些有意义的补全结果，而不是像RNN一样产生一些无意义的结果。
+
+## Learning Discourse-level Diversity for Neural Dialog Models using Conditional Variational Autoencoders
+
